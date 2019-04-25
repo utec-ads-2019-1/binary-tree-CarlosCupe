@@ -9,7 +9,7 @@ class Iterator;
 
 template <typename T>
 class Node {
-    private:
+private:
         T data;
         Node<T> *left;
         Node<T> *right;
@@ -19,6 +19,13 @@ class Node {
 
     template<class>
     friend class Iterator; 
+
+public:
+    Node(){}
+
+    Node(data){
+        left = right = nullptr;
+    }
 };
 
 #endif
