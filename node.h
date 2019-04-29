@@ -23,8 +23,16 @@ private:
 public:
     Node(){}
 
-    Node(data){
+    Node(T data): data(data){
         left = right = nullptr;
+    }
+
+    void killSelf() {
+        if (this->left)
+            this->left->killSelf();
+        if (this->right)
+            this->left->killSelf();
+        delete this;
     }
 };
 
