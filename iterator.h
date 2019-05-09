@@ -39,7 +39,6 @@ class Iterator {
 
         Iterator<T> operator++() {
             // TODO
-            if (this->current)
             if (this->root->data > this->current->data) {
                 if (this->pos_path->size() > 1) {
                     this->pos_path->pop();
@@ -86,6 +85,7 @@ class Iterator {
                 this->current = temp;                
             }
             this->pre_path->push(this->current);  
+                
             return *this;
         }
 

@@ -32,7 +32,6 @@ void Tester::testBSFTree(Mocker mocker, vector<T> elements) {
     }
 
     ASSERT(elements.size() == test->size(), "There is a problem with the remove or size");
-    test->traverseInOrder();
     auto it = test->begin();
     
     for (int j = 0; j < elements.size() && it != test->end(); ++j) {
@@ -42,7 +41,6 @@ void Tester::testBSFTree(Mocker mocker, vector<T> elements) {
 
     for (int j = elements.size() - 1; j >= 0; --j) {
         --it;
-        cout << "\t\t\t\t"<<*it << endl;
         ASSERT(elements.at(j) == *it, "There is a problem with the iterator (--)");
     }
 }
