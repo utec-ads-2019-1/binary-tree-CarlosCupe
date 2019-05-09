@@ -71,6 +71,7 @@ class BSTree {
                 else
                     ptr = &(*ptr)->right;
             }
+            
             if (*ptr  == nullptr)
                 return false;
 
@@ -119,6 +120,16 @@ class BSTree {
 
         void traversePreOrder() {
             // TODO
+            std::function<void(Node<T> *&)> recursive_print;
+            recursive_print = [&recursive_print] (Node<T> *& node) ->void {
+                if (node == nullptr)
+                    return;
+                std::cout << node->data << " ";
+                recursive_print(node->left);
+                recursive_print(node->right); 
+                };
+            recursive_print(this->root);
+            std::cout << std::endl;
         }
 
         void traverseInOrder() {
@@ -137,28 +148,45 @@ class BSTree {
 
         void traversePostOrder() {
             // TODO
+            std::function<void(Node<T> *&)> recursive_print;
+            recursive_print = [&recursive_print] (Node<T> *& node) ->void {
+                if (node == nullptr)
+                    return;
+                recursive_print(node->left);
+                recursive_print(node->right); 
+                std::cout << node->data << " ";
+                };
+            recursive_print(this->root);
+            std::cout << std::endl;
         }
 
         Iterator<T> begin() {
             // TODO
+            if (this->size() == 0)
+                return Iterator<T>();;
+            
             Iterator<T> it(this->root);
+
             Node<T> *ptr = this->root;
-            while (ptr) {
-                --it;
+            
+            while (ptr->left)
                 ptr = ptr->left;
-            }
+            
+            while(*it != ptr->data)
+                --it;
 
             return it;
         }
 
         Iterator<T> end() { 
             // TODO
-            return nullptr;
+            return Iterator<T>();
         }
 
         ~BSTree() {
             // TODO
-            this->root->killSelf();
+            if (this->root)
+                this->root->killSelf();
         }
 };
 

@@ -31,7 +31,7 @@ public:
         if (this->left)
             this->left->killSelf();
         if (this->right)
-            this->left->killSelf();
+            this->right->killSelf();
         delete this;
     }
 };
