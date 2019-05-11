@@ -105,6 +105,8 @@ class BSTree {
                         break;
                 }
             }
+
+            // Falta un return 
         }
 
         unsigned int size() {
